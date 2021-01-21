@@ -1,0 +1,45 @@
+.main-nav {
+    height: 70px;
+    color: #FFF;
+    align-items: center;
+    padding-left: 40px;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.main-nav h4 {
+    font-weight: 700;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: unset;
+}
+
+.nav-logo-text {
+    color: #FFF;
+}
+
+.main-menu {
+    display: flex;
+    font-size: 18px;
+    width: 380px;
+    margin-bottom: 0;
+    justify-content: space-between;
+
+    a {
+        font-style: normal;
+        color: rgba(255, 255, 255, 0.5);
+
+        &.active {
+            font-weight: bold;
+            color: #FFF;
+        }
+
+        &:hover {
+            color: #FFF;
+            text-decoration: none;
+        }
+    }
+}
