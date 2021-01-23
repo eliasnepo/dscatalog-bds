@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import ProductCard from './components/ProductCard';
 import ProductCardLoader from './components/Loaders/ProductCardLoader';
 import './styles.scss';
-import { makeRequest } from '../../core/utils/request';
-import { ProductsResponse } from '../../core/types/product';
+import { makeRequest } from 'core/utils/request';
+import { ProductsResponse } from 'core/types/product';
 
 function Catalog() {
     const [productsResponse, setProductsResponse] = useState<ProductsResponse>();
