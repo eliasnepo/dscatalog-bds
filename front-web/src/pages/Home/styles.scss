@@ -2,6 +2,7 @@
     margin-top: 40px;
     padding-left: 40px;
     padding-right: 40px;
+    padding-bottom: 40px;
 }
 
 .home-content {
@@ -36,7 +37,7 @@
     margin-bottom: 150px;
 }
 
-.main-image {
+.home-image {
     width: 100%;
 }
 
@@ -48,6 +49,9 @@
   
     .home-content {
       flex-direction: column-reverse;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
     }
   
     .text-title {
@@ -68,9 +72,12 @@
   
     .home-image {
       text-align: center;
+      padding: 0;
+      margin: 0;
+      width: 100%;
     }
   
-    .home-image svg {
-      width: 80vw;
-    }
+    // .home-image svg {
+    //   width: 80vw;
+    // }
   }
