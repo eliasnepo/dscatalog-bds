@@ -1,19 +1,34 @@
 .admin-base-form {
-    padding: 70px 45px 50px 45px;
-    border-radius: 20px;
-    width: 1055px;
+  padding: 70px 45px 50px 45px;
+  border-radius: 20px;
+  width: 1055px;
+  display: flex;
+  flex-direction: column;
 }
 
 .base-form-title {
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 33px;
-    letter-spacing: -0.015em;
-    color: #263238;
-    text-transform: uppercase;
+  font-size: 24px;
+  line-height: 33px;
+  letter-spacing: -0.015em;
+  color: #263238;
+  text-transform: uppercase;
+  margin-bottom: 45px;
 }
 
 .base-form-actions {
-    margin-top: 70px;
-    text-align: right;
+  margin-top: 70px;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .admin-base-form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-base-form {
+    width: 100%;
+    flex-direction: column;
+  }
 }

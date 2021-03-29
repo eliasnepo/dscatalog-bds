@@ -1,47 +1,116 @@
 .main-nav {
-    height: 70px;
-    width: 100vw;
-    color: #FFF;
-    align-items: center;
-    padding-left: 40px;
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: 0;
-
-    h4 {
-        font-weight: 700;
-        margin-bottom: 0;
-    }
-
-    a {
-        text-decoration: none;
-        color: unset;
-    }
+  width: 100% !important;
+  height: 70px;
+  color: #fff;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 0 40px;
+  margin: 0px;
 }
 
 .nav-logo-text {
-    color: #FFF;
+  width: 30%;
+  color: #fff;
+}
+
+.menu-mobile-btn {
+  display: none;
+}
+
+.menu-container {
+  width: 55%;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: nowrap;
 }
 
 .main-menu {
-    display: flex;
-    font-size: 18px;
-    width: 380px;
-    margin-bottom: 0;
+  max-width: 300px;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.nav-link {
+  font-size: 18px;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.5);
+
+  &.active {
+    font-weight: bold;
+    color: #fff;
+  }
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+// Tablet adjustments
+@media (max-width: 768px) {
+  .menu-container {
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-nav {
+    width: 100% !important;
     justify-content: space-between;
+  }
+  .menu-container,
+  .user-info-dnone {
+    display: none;
+  }
 
-    a {
-        font-style: normal;
-        color: rgba(255, 255, 255, 0.5);
+  .nav-logo-text {
+    width: 50%;
+    margin-left: -15px;
+  }
 
-        &.active {
-            font-weight: bold;
-            color: #FFF;
-        }
+  .menu-mobile-btn {
+    display: block;
+    border: none;
+    background: transparent;
+    width: 30px;
+    outline: none;
+  }
 
-        &:hover {
-            color: #FFF;
-            text-decoration: none;
-        }
-    }
+  .menu-mobile-container {
+    width: 100%;
+    top: 70px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: #407bff;
+    position: absolute;
+    z-index: 10;
+  }
+
+  .menu-mobile-container ul {
+    height: 150px;
+    display: flex;
+    align-items: flex-start;
+    flex: 1;
+    flex-direction: column;
+    top: 40px;
+  }
+
+  .menu-mobile-container ul li {
+    width: 96vw;
+    margin: 5px 0px;
+  }
+
+  .user-info-dblock {
+    display: block;
+    border: 1px solid red;
+    z-index: 10;
+    position: relative;
+    top: 10px;
+  }
 }

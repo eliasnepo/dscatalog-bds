@@ -1,55 +1,87 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import ProductCard from './components/ProductCard';
-import ProductCardLoader from './components/Loaders/ProductCardLoader';
-import './styles.scss';
-import { makeRequest } from 'core/utils/request';
-import { ProductsResponse } from 'core/types/product';
-import Pagination from 'core/components/Pagination';
+import React, { useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Category, ProductsResponse } from "core/types/Product";
+import Pagination from "core/components/Pagination";
+import { makeRequest } from "core/utils/request";
+import ProductFilters from "core/components/ProductFilters";
+import ProductCard from "./components/ProductCard";
+import ProductCardLoader from "./components/Loaders/ProductCardLoader";
+import "./styles.scss";
 
-function Catalog() {
-    const [productsResponse, setProductsResponse] = useState<ProductsResponse>();
-    const [isLoading, setIsLoading] = useState(false);
-    const [activePage, setActivePage] = useState(0);
+const Catalog = () => {
+  const [productsResponse, setProductsResponse] = useState<ProductsResponse>();
+  const [isLoading, setIsLoading] = useState(false);
+  const [activePage, setActivePage] = useState(0);
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState<Category>();
 
-    useEffect(() => {
-        const params = {
-            page: activePage,
-            linesPerPage: 12,
-        }
+  const getProducts = useCallback(() => {
+    const params = {
+      page: activePage,
+      linesPerPage: 12,
+      name,
+      categoryId: category?.id,
+    };
+    setIsLoading(true);
+    makeRequest({ url: "/products", params })
+      .then((response) => setProductsResponse(response.data))
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [activePage, name, category]);
 
-        setIsLoading(true);
-        makeRequest( {url: '/products', params} )
-        .then(response => setProductsResponse(response.data))
-        .finally(() => {
-            setIsLoading(false);
-        })
-    }, [activePage]);
+  useEffect(() => {
+    getProducts();
+  }, [getProducts]);
 
-    return (
-        <div className="catalog-container">
-            <h1 className="catalog-title">
-            Catálogo de produtos
-            </h1>
-            <div className="catalog-products">
-                {isLoading ? <ProductCardLoader /> : (
-                    productsResponse?.content.map(product => (
-                        <Link to={`/products/${product.id}`} key={product.id}> 
-                            <ProductCard product={product} /> 
-                        </Link>
-                    ))
-                )}
-                
-            </div>
-            {productsResponse && (
-                <Pagination 
-                    totalPages={productsResponse?.totalPages} 
-                    activePage={activePage}
-                    onChange={page => setActivePage(page)}
-                />
-            )}
-        </div>
-    )
-}
+  const handleChangeName = (name: string) => {
+    setActivePage(0);
+    setName(name);
+  };
+
+  const handleChangeCategory = (category: Category) => {
+    setActivePage(0);
+    setCategory(category);
+  };
+
+  const clearFilters = () => {
+    setActivePage(0);
+    setCategory(undefined);
+    setName("");
+  };
+
+  return (
+    <div className="catalog-container">
+      <div className="filter-container">
+        <h1 className="catalog-title">Catálogo de produtos</h1>
+        <ProductFilters
+          name={name}
+          category={category}
+          handleChangeCategory={handleChangeCategory}
+          handleChangeName={handleChangeName}
+          clearFilters={clearFilters}
+        />
+      </div>
+      <div className="catalog-products">
+        {isLoading ? (
+          <ProductCardLoader />
+        ) : (
+          productsResponse?.content.map((product) => (
+            <Link to={`/products/${product.id}`} key={product.id}>
+              <ProductCard product={product} />
+            </Link>
+          ))
+        )}
+      </div>
+      {productsResponse && (
+        <Pagination
+          totalPages={productsResponse.totalPages}
+          activePage={activePage}
+          onChange={(page) => setActivePage(page)}
+        />
+      )}
+    </div>
+  );
+};
 
 export default Catalog;
