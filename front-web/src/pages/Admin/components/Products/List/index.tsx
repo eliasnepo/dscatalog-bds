@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { ProductsResponse } from 'core/types/Product';
+import { ProductsResponse } from "core/types/producttype"
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { makePrivateRequest, makeRequest } from 'core/utils/request';

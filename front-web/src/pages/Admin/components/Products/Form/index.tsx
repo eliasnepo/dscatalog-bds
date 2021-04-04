@@ -5,7 +5,7 @@ import Select from 'react-select';
 import { makePrivateRequest, makeRequest } from 'core/utils/request';
 import { useHistory, useParams } from 'react-router-dom';
 import BaseForm from '../../BaseForm';
-import { Category } from 'core/types/Product';
+import { Category } from 'core/types/producttype';
 import './styles.scss';
 import ImageUpload from '../ImageUpload';
 

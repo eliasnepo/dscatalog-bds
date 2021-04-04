@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import ProductCard from '../ProductCard';
-import { Product } from 'core/types/Product';
+import { Product } from 'core/types/producttype';
 
 test('should render ProductCard', () => {
   const product = {

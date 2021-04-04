@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Category, ProductsResponse } from "core/types/Product";
+import { Category, ProductsResponse } from "core/types/producttype";
 import Pagination from "core/components/Pagination";
 import { makeRequest } from "core/utils/request";
 import ProductFilters from "core/components/ProductFilters";
