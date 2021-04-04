@@ -16,6 +16,7 @@
     "@types/react-select": "^3.0.26",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
+    "caniuse-lite": "^1.0.30001207",
     "jwt-decode": "^3.0.0",
     "msw": "^0.24.1",
     "mutationobserver-shim": "^0.3.7",
