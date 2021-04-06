@@ -44,7 +44,7 @@
   }
 
   .admin-nav-item {
-    width: 278px;
+    width: 10rem;
     height: 80px;
     border-radius: 40px;
     display: flex;
@@ -53,11 +53,24 @@
     padding-left: 0px;
     background: #f2f2f2;
   }
+
+  .admin-nav-item p {
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+  }
 }
 
 @media (max-width: 576px) {
   .admin-nav-item {
-    width: 190px;
+    width: 100px;
     height: 50px;
+  }
+
+  .admin-nav-item p {
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 14px;
   }
 }

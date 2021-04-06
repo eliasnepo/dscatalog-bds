@@ -103,7 +103,7 @@ const Navbar = () => {
       <div className="user-info-dnone text-right">
         {currentUser && (
           <>
-            {currentUser}
+            <p>{currentUser}</p>
             <a
               href="#logout"
               className="nav-link active d-inline"
