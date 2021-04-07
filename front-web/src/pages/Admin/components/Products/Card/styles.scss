@@ -70,8 +70,12 @@
     margin: 10px 0;
 
     .btn-product {
-      width: 135px !important;
+      width: 120px !important;
       margin: 0px !important;
+    }
+
+    .border-img {
+      border-bottom: 1px solid #cecece;
     }
   }
 }
