@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -40,9 +41,9 @@ public class UserResource {
 			@RequestParam(value = "orderBy", defaultValue = "firstName") String orderBy
 			) {
 		
-		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
+		Pageable pageable = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		
-		Page<UserDTO> list = service.findAllPaged(pageRequest);
+		Page<UserDTO> list = service.findAllPaged(pageable);
 		return ResponseEntity.ok().body(list);
 	}
 	
